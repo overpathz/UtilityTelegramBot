@@ -1,6 +1,7 @@
 package com.pathz.tgbot.service;
 
 import com.pathz.tgbot.message_sender.MessageSender;
+import com.pathz.tgbot.util.PasswordGenerator;
 import com.pathz.tgbot.util.WeatherFinderApi;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -10,6 +11,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static com.pathz.tgbot.util.BotCommands.*;
 
 @Component
 public final class MessageHandlerService {
@@ -26,8 +29,7 @@ public final class MessageHandlerService {
 
     public void sendWeather(Message message, String text) {
         try {
-            String preparedText = text.replaceAll("[\\s]{2,}", " ");
-            String city = preparedText.split(" ")[1];
+            String city = text.split(" ")[1];
             Optional<Map<String, String>> weatherOptional = weatherFinderApi.getWeather(city);
 
             if (weatherOptional.isPresent()) {
@@ -46,7 +48,7 @@ public final class MessageHandlerService {
                         weather.get("description"));
 
                 send(message, weatherToUser);
-                
+
             } else {
                 sendErrorMessage(message, "City not found!");
             }
@@ -67,5 +69,42 @@ public final class MessageHandlerService {
 
     public void sendErrorMessage(Message message, String text) {
         send(message, "[Error] " + text);
+    }
+
+    public void sendHelp(Message message) {
+        String helpMessage = """
+                %s "city" - get the weather of the city you entered
+                """.formatted(WEATHER_COMMAND);
+
+        send(message, helpMessage);
+    }
+
+    public void sendRandomPassword(Message message, String[] array) {
+
+        String stringLen;
+
+        try {
+            stringLen = array[1];
+            int passLength;
+
+            try {
+                passLength = Integer.parseInt(stringLen);
+                if (passLength <= 30) {
+                    send(message, PasswordGenerator.generatePassword(passLength));
+                } else {
+                    sendErrorMessage(message, "Max length of the password is 30");
+                }
+            } catch (NumberFormatException e) {
+                logger.log(Level.WARNING, "%s cannot be converted to int".formatted(stringLen));
+                sendErrorMessage(message, "You have to enter only integer numbers");
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            sendErrorMessage(message, "You forgot enter the length :)");
+            logger.log(Level.WARNING, "Message length is one. Cant convert string to array");
+        }
+
+
+
+
     }
 }

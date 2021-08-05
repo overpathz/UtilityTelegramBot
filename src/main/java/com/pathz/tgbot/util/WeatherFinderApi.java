@@ -38,7 +38,7 @@ public class WeatherFinderApi {
                     new ParameterizedTypeReference<>() {
                     });
         } catch (HttpClientErrorException exception) {
-            logger.log(Level.WARNING, "City not found");
+            logger.log(Level.WARNING, "City %s not found".formatted(city));
             return Optional.empty();
         }
 
