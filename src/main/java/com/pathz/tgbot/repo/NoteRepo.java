@@ -12,4 +12,8 @@ public interface NoteRepo extends JpaRepository<Note, Long> {
     int countNotesByChatId(Long chatId);
 
     List<Note> findAllByChatId(Long chatId);
+
+    void deleteAllByChatId(Long chatId);
+
+    int deleteByIdAndChatId(Long id, Long chatId);
 }

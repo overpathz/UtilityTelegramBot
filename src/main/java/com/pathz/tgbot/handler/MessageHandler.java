@@ -23,27 +23,50 @@ public class MessageHandler implements Handler<Message> {
             String userText = message.getText().replaceAll("[\\s]{2,}", " ");
             String[] splitText = userText.split(" ");
 
-            messageHandlerService.saveMessageInLog(message);
-
             if (userText.contains(WEATHER_COMMAND)) {
                 messageHandlerService.sendWeather(message, userText);
             }
 
-            if (userText.equals(HELP_COMMAND)) {
+            else if (userText.equals(HELP_COMMAND)) {
                 messageHandlerService.sendHelp(message);
             }
 
-            if (userText.contains(RANDOM_PASSWORD_COMMAND)) {
+            else if (userText.contains(RANDOM_PASSWORD_COMMAND)) {
                 messageHandlerService.sendRandomPassword(message, splitText);
             }
 
-            if (userText.contains(NOTE_COMMAND)) {
+            else if (userText.contains(NOTE_COMMAND)) {
                 messageHandlerService.saveNote(message, userText);
             }
 
-            if (userText.equals(SHOW_NOTES_COMMAND)) {
+            else if (userText.equals(SHOW_NOTES_COMMAND)) {
                 messageHandlerService.showNotes(message);
             }
+
+            else if (userText.equals(CLEAR_NOTES_COMMAND)) {
+                messageHandlerService.clearNotes(message);
+            }
+
+            else if (userText.contains(DELETE_NOTE_COMMAND)) {
+                messageHandlerService.deleteNoteId(message, splitText);
+            }
+
+            else if (userText.contains(RANDOM_NUMBER_COMMAND)) {
+                messageHandlerService.sendRandomNumber(message, splitText);
+            }
+
+            else if (userText.equals(BONK_ADMIN_COMMAND)) {
+                messageHandlerService.bonkSomeone(message);
+            }
+
+            else if (userText.equals(ADD_TO_ADMINS_COMMAND)) {
+                messageHandlerService.addNewAdmin(message);
+            }
+
+            else if (userText.equals(REMOVE_FROM_ADMINS)) {
+                messageHandlerService.removeFromAdmins(message);
+            }
+
         }
     }
 }
