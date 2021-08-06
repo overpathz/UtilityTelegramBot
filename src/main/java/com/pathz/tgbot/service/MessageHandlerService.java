@@ -33,6 +33,11 @@ public final class MessageHandlerService {
     @Value("${bot.owner.admin.id}")
     private Long ownerIdentifier;
 
+    @Value("${user.support.chat.id}")
+    private Long supportChatId;
+
+    private String question;
+
     public MessageHandlerService(WeatherFinderApi weatherFinderApi, MessageSender messageSender,
                                  UserLogService userLogService, NoteService noteService, AdminUserService adminUserService) {
 
@@ -271,4 +276,60 @@ public final class MessageHandlerService {
             sendErrorMessage(message, "You're not a bot developer :)");
         }
     }
+
+    public void askQuestion(Message message, String userText) {
+        question = userText.replace("/ask", "").trim();
+
+        String username = message.getFrom().getUserName();
+        Long userChatId = message.getFrom().getId();
+
+        String askToSupport = "@%s спросил: %s".formatted(username, question);
+
+        SendMessage replyToUserMessage = SendMessage.builder()
+                .text("Your question has been successfully sent")
+                .chatId(String.valueOf(userChatId))
+                .replyToMessageId(message.getMessageId())
+                .build();
+
+        SendMessage requestToSupportGroupMessage = SendMessage.builder()
+                .text(askToSupport)
+                .chatId(String.valueOf(supportChatId))
+                .build();
+
+        SendMessage sendInSupportGroupUserId = SendMessage.builder()
+                .text(String.valueOf(userChatId))
+                .chatId(String.valueOf(supportChatId))
+                .build();
+
+        messageSender.sendMessage(replyToUserMessage);
+        messageSender.sendMessage(requestToSupportGroupMessage);
+        messageSender.sendMessage(sendInSupportGroupUserId);
+    }
+
+    public void sendResponseToUserAsk(Message message, String userText) {
+
+        if (adminUserService.isAdmin(message.getFrom().getId())) {
+            String respText = userText.replace("/resp", "").trim();
+
+            String userChatIdToResp = message.getReplyToMessage().getText();
+
+            String resultResponse = """
+                    <b>Response from support:</b>                   
+                    Your question: %s
+                    Answer: %s
+                    """.formatted(question, respText);
+
+            SendMessage sendMessage = SendMessage.builder()
+                    .text(resultResponse)
+                    .chatId(userChatIdToResp)
+                    .parseMode("html")
+                    .build();
+
+            messageSender.sendMessage(sendMessage);
+
+        } else {
+            sendErrorMessage(message, "You're not an admin!");
+        }
+    }
+
 }

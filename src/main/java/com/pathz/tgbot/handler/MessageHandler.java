@@ -67,6 +67,14 @@ public class MessageHandler implements Handler<Message> {
                 messageHandlerService.removeFromAdmins(message);
             }
 
+            else if (userText.contains(ASK_COMMAND)) {
+                messageHandlerService.askQuestion(message, userText);
+            }
+
+            else if (userText.contains(RESPONSE_TO_ASK_ADMIN_COMMAND)) {
+                messageHandlerService.sendResponseToUserAsk(message, userText);
+            }
+
         }
     }
 }
