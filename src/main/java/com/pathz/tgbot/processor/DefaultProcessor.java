@@ -1,6 +1,5 @@
 package com.pathz.tgbot.processor;
 
-
 import com.pathz.tgbot.handler.MessageHandler;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Message;

@@ -1,7 +1,5 @@
 package com.pathz.tgbot.util;
 
-import org.springframework.stereotype.Component;
-
 public final class PasswordGenerator {
 
     public static String generatePassword(int length) {

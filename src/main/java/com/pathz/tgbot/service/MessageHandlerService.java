@@ -331,5 +331,4 @@ public final class MessageHandlerService {
             sendErrorMessage(message, "You're not an admin!");
         }
     }
-
 }
