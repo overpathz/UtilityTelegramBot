@@ -138,9 +138,16 @@ public final class MessageHandlerService {
         note.setChatId(message.getChatId());
 
         noteService.save(note);
+
+        send(message, "The note has been saved");
     }
 
     public void showNotes(Message message) {
-        send(message, String.valueOf(noteService.countNotesByChatId(message.getChatId())));
+        StringBuilder sb = new StringBuilder();
+        sb.append("=== CHAT NOTES ===\n");
+
+        noteService.findAll(message.getChatId()).forEach(sb::append);
+
+        send(message, sb.toString());
     }
 }
