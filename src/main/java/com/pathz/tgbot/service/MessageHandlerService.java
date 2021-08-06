@@ -1,5 +1,7 @@
 package com.pathz.tgbot.service;
 
+import com.pathz.tgbot.entity.Note;
+import com.pathz.tgbot.entity.UserLog;
 import com.pathz.tgbot.message_sender.MessageSender;
 import com.pathz.tgbot.util.PasswordGenerator;
 import com.pathz.tgbot.util.WeatherFinderApi;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -19,12 +22,16 @@ public final class MessageHandlerService {
 
     private final WeatherFinderApi weatherFinderApi;
     private final MessageSender messageSender;
+    private final UserLogService userLogService;
+    private final NoteService noteService;
 
     private final Logger logger = Logger.getLogger("MessageHandlerService");
 
-    public MessageHandlerService(WeatherFinderApi weatherFinderApi, MessageSender messageSender) {
+    public MessageHandlerService(WeatherFinderApi weatherFinderApi, MessageSender messageSender, UserLogService userLogService, NoteService noteService) {
         this.weatherFinderApi = weatherFinderApi;
         this.messageSender = messageSender;
+        this.userLogService = userLogService;
+        this.noteService = noteService;
     }
 
     public void sendWeather(Message message, String text) {
@@ -104,7 +111,36 @@ public final class MessageHandlerService {
         }
 
 
+    }
 
+    public void saveMessageInLog(Message message) {
 
+        String username = message.getFrom().getUserName();
+        String userMessage = message.getText();
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        UserLog userLog = new UserLog();
+
+        userLog.setUsername(username);
+        userLog.setUserMessage(userMessage);
+        userLog.setLocalDateTime(localDateTime);
+
+        userLogService.save(userLog);
+    }
+
+    public void saveNote(Message message, String userText) {
+        String noteText = userText.replace("/note", "").trim();
+
+        Note note = new Note();
+
+        note.setText(noteText);
+        note.setUsername(message.getFrom().getUserName());
+        note.setChatId(message.getChatId());
+
+        noteService.save(note);
+    }
+
+    public void showNotes(Message message) {
+        send(message, String.valueOf(noteService.countNotesByChatId(message.getChatId())));
     }
 }
