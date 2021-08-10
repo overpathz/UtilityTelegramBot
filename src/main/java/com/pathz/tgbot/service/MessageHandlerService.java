@@ -95,7 +95,7 @@ public final class MessageHandlerService {
 
     public void sendHelp(Message message) {
         String helpMessage = """
-                <b>AVAILABLE COMMANDS:</b>
+                <b>AVAILABLE COMMANDS: (enter without quotes)</b>
                 %s "city" - get the weather of the city you entered
                 %s "length" - generate a random password
                 %s "your note" - create a note (limit 10)
