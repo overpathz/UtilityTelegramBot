@@ -19,7 +19,6 @@ Tele.<br><br>
 
 ## Set Up
 1. Get the Telegram token<br>
-
 @BotFather - start this bot<br>
 Type /newbot command. There are will be instructions.<br>
 After creating the bot, you will be have the username and the token.<br><br>
