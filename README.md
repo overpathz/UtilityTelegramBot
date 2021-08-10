@@ -3,13 +3,10 @@
 ## Description:<br>
 Tele.<br><br>
 
-[!] Not all tests are written because I had no experience before, but the test task made me understand and learn the basics in a few time. <br>
-
 ## Features
 - ##### Quite good functionality
 - ##### User support system
 - ##### In addition to Telegram API, others are used here
-
 
 ## Technologies
 - ##### Java 16
@@ -19,7 +16,6 @@ Tele.<br><br>
 - ##### Git
 - ##### PostgreSQL
 - ##### Telegram bots API
-
 
 ### Set Up
 1. Get the Telegram token<br>
