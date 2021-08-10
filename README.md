@@ -17,7 +17,7 @@ Tele.<br><br>
 - ##### PostgreSQL
 - ##### Telegram bots API
 
-### Set Up
+## Set Up
 1. Get the Telegram token<br>
 
 @BotFather - start this bot<br>
