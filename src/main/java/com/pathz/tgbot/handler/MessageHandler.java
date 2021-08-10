@@ -3,7 +3,6 @@ package com.pathz.tgbot.handler;
 import com.pathz.tgbot.service.MessageHandlerService;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.User;
 
 import static com.pathz.tgbot.util.BotCommands.*;
 
@@ -55,18 +54,6 @@ public class MessageHandler implements Handler<Message> {
                 messageHandlerService.sendRandomNumber(message, splitText);
             }
 
-            else if (userText.equals(BONK_ADMIN_COMMAND)) {
-                messageHandlerService.bonkSomeone(message);
-            }
-
-            else if (userText.equals(ADD_TO_ADMINS_COMMAND)) {
-                messageHandlerService.addNewAdmin(message);
-            }
-
-            else if (userText.equals(REMOVE_FROM_ADMINS)) {
-                messageHandlerService.removeFromAdmins(message);
-            }
-
             else if (userText.contains(ASK_COMMAND)) {
                 messageHandlerService.askQuestion(message, userText);
             }
@@ -75,6 +62,9 @@ public class MessageHandler implements Handler<Message> {
                 messageHandlerService.sendResponseToUserAsk(message, userText);
             }
 
+            else if (userText.equals(START_COMMAND)) {
+                messageHandlerService.sendHelp(message);
+            }
         }
     }
 }

@@ -1,8 +1,6 @@
 package com.pathz.tgbot.service;
 
-import com.pathz.tgbot.entity.AdminUser;
 import com.pathz.tgbot.entity.Note;
-import com.pathz.tgbot.entity.UserLog;
 import com.pathz.tgbot.message_sender.MessageSender;
 import com.pathz.tgbot.util.PasswordGenerator;
 import com.pathz.tgbot.util.WeatherFinderApi;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
-import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -24,7 +21,6 @@ public final class MessageHandlerService {
 
     private final WeatherFinderApi weatherFinderApi;
     private final MessageSender messageSender;
-    private final UserLogService userLogService;
     private final NoteService noteService;
     private final AdminUserService adminUserService;
 
@@ -39,11 +35,10 @@ public final class MessageHandlerService {
     private String question;
 
     public MessageHandlerService(WeatherFinderApi weatherFinderApi, MessageSender messageSender,
-                                 UserLogService userLogService, NoteService noteService, AdminUserService adminUserService) {
+                                 NoteService noteService, AdminUserService adminUserService) {
 
         this.weatherFinderApi = weatherFinderApi;
         this.messageSender = messageSender;
-        this.userLogService = userLogService;
         this.noteService = noteService;
         this.adminUserService = adminUserService;
     }
@@ -141,22 +136,6 @@ public final class MessageHandlerService {
 
     }
 
-    public void saveMessageInLog(Message message) {
-
-        String username = message.getFrom().getUserName();
-        String userMessage = message.getText();
-        LocalDateTime localDateTime = LocalDateTime.now();
-
-        UserLog userLog = new UserLog();
-
-        userLog.setUsername(username);
-        userLog.setUserMessage(userMessage);
-        userLog.setLocalDateTime(localDateTime);
-
-        System.out.println(noteService.countNotesByChatId(message.getChatId()));
-        userLogService.save(userLog);
-    }
-
     public void saveNote(Message message, String userText) {
 
         String noteText = userText.replace("/note", "").trim();
@@ -225,55 +204,6 @@ public final class MessageHandlerService {
             send(message, "Random number in given range: %s".formatted(randomNumber));
         } catch (Exception e) {
             sendErrorMessage(message, "Incorrect input");
-        }
-    }
-
-    public void bonkSomeone(Message message) {
-
-        Long adminIdentifier = message.getFrom().getId();
-
-        if (adminUserService.isAdmin(adminIdentifier)) {
-            String user = message.getFrom().getFirstName();
-            String userToBonk = message.getReplyToMessage().getFrom().getFirstName();
-
-            send(message, "%s hit %s".formatted(user, userToBonk));
-        } else {
-            sendErrorMessage(message, "You're not a bot developer :)");
-        }
-
-    }
-
-    public void addNewAdmin(Message message) {
-
-        Long adminIdentifier = message.getFrom().getId();
-
-        if (ownerIdentifier.equals(adminIdentifier)) {
-            String username = message.getReplyToMessage().getFrom().getUserName();
-            Long identifier = message.getReplyToMessage().getFrom().getId();
-
-            AdminUser adminUser = new AdminUser();
-            adminUser.setUsername(username);
-            adminUser.setAdminIdentifier(identifier);
-
-            adminUserService.addNewAdmin(adminUser);
-
-            send(message, "New admin was added successfully");
-        } else {
-            sendErrorMessage(message, "You're not a bot developer :)");
-        }
-    }
-
-    public void removeFromAdmins(Message message) {
-        Long adminIdentifier = message.getFrom().getId();
-
-        if (ownerIdentifier.equals(adminIdentifier)) {
-            Long identifier = message.getReplyToMessage().getFrom().getId();
-
-            adminUserService.removeFromAdmins(identifier);
-
-            send(message, "%s was removed from admins".formatted(message.getReplyToMessage().getFrom().getUserName()));
-        } else {
-            sendErrorMessage(message, "You're not a bot developer :)");
         }
     }
 
