@@ -20,11 +20,12 @@ Tele.<br><br>
 ## Set Up
 1. Get the Telegram token<br>
 @BotFather - start this bot<br>
-Type /newbot command. There are will be instructions.<br>
+Type /newbot command. There are will be further instructions.<br>
 After creating the bot, you will be have the username and the token.<br><br>
 
 2. Get the OpenWeatherMap API key<br>
-Your API keys can always be found on your account page, where you can also generate additional API keys if needed.<br>
+https://openweathermap.org/guide
+Your API keys can always be found on your account page,<br>where you can also generate additional API keys if needed.<br>
 
 3. Create posgres database, smth like that: util_bot_repo<br>
 In this database, you have to create some tables: note, admin (sql queries for creating here: https://pastebin.com/D1XGbzey)<br>
