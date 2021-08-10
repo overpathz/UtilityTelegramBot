@@ -46,5 +46,5 @@ bot.owner.admin.id=YOUR_TELEGRAM_IDENTIFIER
 user.support.chat.id=TG_GROUP_SUPPORT_CHAT_ID
 ```
 
-![image](https://i.ibb.co/Fq0tGsz/Screenshot-21.png)
+![image]()
 
