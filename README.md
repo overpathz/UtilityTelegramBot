@@ -39,7 +39,7 @@ Your API keys can always be found on your account page,<br>where you can also ge
 In this database, you have to create some tables: note, admin (sql queries for creating here: https://pastebin.com/D1XGbzey).<br>
 
 4. Create application.properties file in "src/main/resources" and input there this properties:<br>
-(tokens, api keys, and other info ou)<br>
+(tokens, api keys, and other info you have got earlier)<br>
 ```
 spring.datasource.url=jdbc:postgresql://localhost:5432/YOUR_DB_NAME
 spring.datasource.driver-class-name=org.postgresql.Driver
