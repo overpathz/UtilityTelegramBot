@@ -59,5 +59,5 @@ user.support.chat.id=TG_GROUP_SUPPORT_CHAT_ID
 ✔ Weather command <br><br>
 <a href="https://ibb.co/rwxqcMT"><img src="https://i.ibb.co/6WHG1bV/Screenshot-41.png" alt="Screenshot-41" border="0"></a> <br><br>
 
-✔ Random number in chosen range
-<a href="https://ibb.co/Ch12R6c"><img src="https://i.ibb.co/gzjVkd2/Screenshot-42.png" alt="Screenshot-42" border="0"></a>
+✔ Password generator <br><br>
+<a href="https://ibb.co/Ch12R6c"><img src="https://i.ibb.co/gzjVkd2/Screenshot-42.png" alt="Screenshot-42" border="0"></a> <br><br>
