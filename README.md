@@ -53,7 +53,7 @@ open.weather.api.token=YOUR_OPENWEATHERMAP_API_KEY
 bot.owner.admin.id=YOUR_TELEGRAM_IDENTIFIER
 user.support.chat.id=TG_GROUP_SUPPORT_CHAT_ID
 ```
-5. Run the application, and start you bot
+5. Run the application, and start your bot
 
 ## Overview
 ✔ Weather command <br>
