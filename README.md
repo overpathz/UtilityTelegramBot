@@ -1,7 +1,15 @@
 # Utility telegram bot
 
 ## Description:<br>
-Tele.<br><br>
+Telegram bot written in Java for personal use.<br><br>
+
+✔️ Weather <br>
+✔️ Random number in choosen range <br>
+✔️ User support system <br>
+✔️ User support system <br>
+✔️ Notes manager <br>
+
+(Examples of commands in "Overview" part in readme)<br><br>
 
 ## Features
 - ##### Quite good functionality
