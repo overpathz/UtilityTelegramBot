@@ -67,3 +67,11 @@ user.support.chat.id=TG_GROUP_SUPPORT_CHAT_ID
 
 ✔ Notes manager <br>
 <a href="https://ibb.co/8cSpmg2"><img src="https://i.ibb.co/hftjgFH/Screenshot-43.png" alt="Screenshot-43" border="0"></a> <br><br>
+
+✔ Users support system <br>
+User's chat (ask): <br>
+<a href="https://ibb.co/Bgmw5QN"><img src="https://i.ibb.co/jLdHPQR/Screenshot-45.png" alt="Screenshot-45" border="0"></a> <br>
+User's ask in the admin support group: <br>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/5YvqDKW/Screenshot-46.png" alt="Screenshot-46" border="0"></a> <br>
+User's chat (response): <br>
+<a href="https://ibb.co/FYJ4C8F"><img src="https://i.ibb.co/z2bVDPz/Screenshot-47.png" alt="Screenshot-47" border="0"></a> <br>
