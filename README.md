@@ -4,7 +4,7 @@
 Telegram bot written in Java for personal use.<br>
 
 ✔️ Weather <br>
-✔️ Random number in choosen range <br>
+✔️ Random number in chosen range <br>
 ✔️ Password generator <br>
 ✔️ User support system <br>
 ✔️ Notes manager <br>
@@ -53,6 +53,10 @@ open.weather.api.token=YOUR_OPENWEATHERMAP_API_KEY
 bot.owner.admin.id=YOUR_TELEGRAM_IDENTIFIER
 user.support.chat.id=TG_GROUP_SUPPORT_CHAT_ID
 ```
+5. Run the application, and start you bot
 
-![image]()
+## Overview
+✔ Weather command <br>
+
+![image](<a href="https://ibb.co/rwxqcMT"><img src="https://i.ibb.co/6WHG1bV/Screenshot-41.png" alt="Screenshot-41" border="0"></a>)
 
