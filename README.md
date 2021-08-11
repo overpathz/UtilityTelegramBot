@@ -5,7 +5,7 @@ Telegram bot written in Java for personal use.<br>
 
 ✔️ Weather <br>
 ✔️ Random number in choosen range <br>
-✔️ User support system <br>
+✔️ Password generator <br>
 ✔️ User support system <br>
 ✔️ Notes manager <br>
 
