@@ -57,6 +57,5 @@ user.support.chat.id=TG_GROUP_SUPPORT_CHAT_ID
 
 ## Overview
 ✔ Weather command <br>
-
-![image](<a href="https://ibb.co/rwxqcMT"><img src="https://i.ibb.co/6WHG1bV/Screenshot-41.png" alt="Screenshot-41" border="0"></a>)
+<a href="https://ibb.co/rwxqcMT"><img src="https://i.ibb.co/6WHG1bV/Screenshot-41.png" alt="Screenshot-41" border="0"></a>
 
