@@ -64,3 +64,6 @@ user.support.chat.id=TG_GROUP_SUPPORT_CHAT_ID
 
 ✔ Random number in chosen range <br>
 <a href="https://ibb.co/cv54VrG"><img src="https://i.ibb.co/JdLDgsf/Screenshot-44.png" alt="Screenshot-44" border="0"></a> <br><br>
+
+✔ Notes manager <br>
+<a href="https://ibb.co/8cSpmg2"><img src="https://i.ibb.co/hftjgFH/Screenshot-43.png" alt="Screenshot-43" border="0"></a> <br><br>
