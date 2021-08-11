@@ -1,7 +1,7 @@
 # Utility telegram bot
 
 ## Description:<br>
-Telegram bot written in Java for personal use.<br><br>
+Telegram bot written in Java for personal use.<br>
 
 ✔️ Weather <br>
 ✔️ Random number in choosen range <br>
