@@ -35,7 +35,7 @@ After creating the bot, you will be have the username and the token.<br><br>
 https://openweathermap.org/guide<br>
 Your API keys can always be found on your account page,<br>where you can also generate additional API keys if needed.<br>
 
-3. Create posgres database, smth like that: util_bot_repo<br>
+3. Create posgres database, name smth like that: util_bot_repo<br>
 In this database, you have to create some tables: note, admin (sql queries for creating here: https://pastebin.com/D1XGbzey).<br>
 
 4. Create application.properties file in "src/main/resources" and input there this properties:<br>
