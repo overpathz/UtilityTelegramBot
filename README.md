@@ -9,7 +9,7 @@ Telegram bot written in Java for personal use.<br>
 ✔️ User support system <br>
 ✔️ Notes manager <br>
 
-(Examples of commands in "Overview" part in readme)<br><br>
+(Examples of commands using in "Overview" part in readme)<br><br>
 
 ## Features
 - ##### Quite good functionality
