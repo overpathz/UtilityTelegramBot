@@ -57,21 +57,23 @@ user.support.chat.id=TG_GROUP_SUPPORT_CHAT_ID
 
 ## Overview
 ✔ Weather command <br>
-<a href="https://ibb.co/rwxqcMT"><img src="https://i.ibb.co/6WHG1bV/Screenshot-41.png" alt="Screenshot-41" border="0"></a> <br><br>
+![1](https://user-images.githubusercontent.com/72043323/138588309-76c79ed5-b332-4bdc-ae88-8371d15076e7.png)
 
 ✔ Password generator <br>
-<a href="https://ibb.co/Ch12R6c"><img src="https://i.ibb.co/gzjVkd2/Screenshot-42.png" alt="Screenshot-42" border="0"></a> <br><br>
+![2](https://user-images.githubusercontent.com/72043323/138588312-44733267-1816-484a-9bed-129feb53786b.png)
 
 ✔ Random number in chosen range <br>
-<a href="https://ibb.co/cv54VrG"><img src="https://i.ibb.co/JdLDgsf/Screenshot-44.png" alt="Screenshot-44" border="0"></a> <br><br>
+![3](https://user-images.githubusercontent.com/72043323/138588313-95808be8-c96a-4c7c-acd1-27db3a661d7d.png)
 
 ✔ Notes manager <br>
-<a href="https://ibb.co/8cSpmg2"><img src="https://i.ibb.co/hftjgFH/Screenshot-43.png" alt="Screenshot-43" border="0"></a> <br><br>
+![4](https://user-images.githubusercontent.com/72043323/138588331-8af5e6bb-6ce6-46ba-b40e-7ec79c6f84a0.png)
 
 ✔ Users support system <br><br>
 User's chat (ask): <br>
-<a href="https://ibb.co/Bgmw5QN"><img src="https://i.ibb.co/jLdHPQR/Screenshot-45.png" alt="Screenshot-45" border="0"></a> <br><br>
+![5](https://user-images.githubusercontent.com/72043323/138588344-b00835a8-c401-481f-ae07-45bdafa49ddf.png)
+
 User's ask in the admin support group: <br>
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/5YvqDKW/Screenshot-46.png" alt="Screenshot-46" border="0"></a> <br><br>
+![6](https://user-images.githubusercontent.com/72043323/138588346-18e05883-74d5-4a8a-8244-ba93ca68e7af.png)
+
 User's chat (response): <br>
-<a href="https://ibb.co/FYJ4C8F"><img src="https://i.ibb.co/z2bVDPz/Screenshot-47.png" alt="Screenshot-47" border="0"></a> <br><br>
+![7](https://user-images.githubusercontent.com/72043323/138588349-8f5e1195-4602-4238-a84e-e0c173cab3af.png)
