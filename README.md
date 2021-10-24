@@ -8,6 +8,7 @@ Telegram bot written in Java for personal use.<br>
 ✔️ Password generator <br>
 ✔️ User support system <br>
 ✔️ Notes manager <br>
+![Screenshot_8](https://user-images.githubusercontent.com/72043323/138587934-51a5fff8-cc60-4b03-b7b2-311ea943e658.png)
 
 (Examples of commands using in "Overview" part in readme)<br><br>
 
