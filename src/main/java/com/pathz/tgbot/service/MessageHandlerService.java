@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.MessageEntity;
 
 import java.util.Map;
 import java.util.Optional;
@@ -44,9 +45,8 @@ public final class MessageHandlerService {
     }
 
 
-    public void sendWeather(Message message, String text) {
+    public void sendWeather(Message message, String city) {
         try {
-            String city = text.split(" ")[1];
             Optional<Map<String, String>> weatherOptional = weatherFinderApi.getWeather(city);
 
             if (weatherOptional.isPresent()) {
@@ -109,23 +109,20 @@ public final class MessageHandlerService {
         messageSender.sendMessage(sendMessage);
     }
 
-    public void sendRandomPassword(Message message, String[] array) {
-
-        String stringLen;
+    public void sendRandomPassword(Message message, String strLen) {
 
         try {
-            stringLen = array[1];
             int passLength;
 
             try {
-                passLength = Integer.parseInt(stringLen);
+                passLength = Integer.parseInt(strLen);
                 if (passLength <= 30) {
                     send(message, PasswordGenerator.generatePassword(passLength));
                 } else {
                     sendErrorMessage(message, "Max length of the password is 30");
                 }
             } catch (NumberFormatException e) {
-                logger.log(Level.WARNING, "%s cannot be converted to int".formatted(stringLen));
+                logger.log(Level.WARNING, "%s cannot be converted to int".formatted(strLen));
                 sendErrorMessage(message, "You have to enter only integer numbers");
             }
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -136,10 +133,7 @@ public final class MessageHandlerService {
 
     }
 
-    public void saveNote(Message message, String userText) {
-
-        String noteText = userText.replace("/note", "").trim();
-
+    public void saveNote(Message message, String noteText) {
         if (noteText.length() < 4) {
             sendErrorMessage(message, "Min note length is 4");
         } else {
@@ -180,9 +174,9 @@ public final class MessageHandlerService {
         }
     }
 
-    public void deleteNoteId(Message message, String[] splitText) {
+    public void deleteNoteId(Message message, String idArg) {
         try {
-            Long id = Long.parseLong(splitText[1]);
+            Long id = Long.parseLong(idArg);
             Long chatId = message.getChatId();
 
             int boolRes = noteService.deleteNote(id, chatId);
@@ -197,9 +191,9 @@ public final class MessageHandlerService {
         }
     }
 
-    public void sendRandomNumber(Message message, String[] splitText) {
+    public void sendRandomNumber(Message message, String strNumber) {
         try {
-            int digit = Integer.parseInt(splitText[1]);
+            int digit = Integer.parseInt(strNumber);
             int randomNumber = (int) (Math.random() * digit);
             send(message, "Random number in given range: %s".formatted(randomNumber));
         } catch (Exception e) {
@@ -207,13 +201,13 @@ public final class MessageHandlerService {
         }
     }
 
-    public void askQuestion(Message message, String userText) {
-        question = userText.replace("/ask", "").trim();
+    public void askQuestion(Message message, String questionText) {
+        question = questionText;
 
         String username = message.getFrom().getUserName();
         Long userChatId = message.getFrom().getId();
 
-        String askToSupport = "@%s спросил: %s".formatted(username, question);
+        String askToSupport = "@%s asked: %s".formatted(username, question);
 
         SendMessage replyToUserMessage = SendMessage.builder()
                 .text("Your question has been successfully sent")
@@ -236,18 +230,16 @@ public final class MessageHandlerService {
         messageSender.sendMessage(sendInSupportGroupUserId);
     }
 
-    public void sendResponseToUserAsk(Message message, String userText) {
+    public void sendResponseToUserAsk(Message message, String response) {
 
         if (adminUserService.isAdmin(message.getFrom().getId())) {
-            String respText = userText.replace("/resp", "").trim();
-
             String userChatIdToResp = message.getReplyToMessage().getText();
 
             String resultResponse = """
                     <b>Response from support:</b>                   
                     Your question: %s
                     Answer: %s
-                    """.formatted(question, respText);
+                    """.formatted(question, response);
 
             SendMessage sendMessage = SendMessage.builder()
                     .text(resultResponse)

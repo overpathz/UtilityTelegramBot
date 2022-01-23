@@ -21,14 +21,14 @@ public class WeatherFinderApi {
     private String TOKEN;
 
     private final RestTemplate restTemplate;
-    private final Logger logger = Logger.getLogger("WeatherFinderApi");
+    private final Logger logger = Logger.getLogger(WeatherFinderApi.class.getSimpleName());
 
     public WeatherFinderApi(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
     public Optional<Map<String, String>> getWeather(String city) {
-
+        logger.info("Getting weather..");
         String API_URL = getParametrizedUrl(city);
 
         ResponseEntity<String> responseEntity;
@@ -53,20 +53,21 @@ public class WeatherFinderApi {
         map.put("tempMax", String.valueOf(object.getJSONObject("main").getDouble("temp_max")));
         map.put("description", object.getJSONArray("weather").getJSONObject(0).getString("description"));
 
+        logger.info("Weather has been found: " + object);
         return Optional.of(map);
     }
 
     private String getParametrizedUrl(String city) {
         String URL = "https://api.openweathermap.org/";
-        StringBuilder stringBuilder = new StringBuilder(URL);
 
-        stringBuilder
-                .append("data/2.5/weather?q=")
-                .append(city)
-                .append("&appid=")
-                .append(TOKEN)
-                .append("&units=metric");
+        String generatedApiUrl = URL +
+                "data/2.5/weather?q=" +
+                city +
+                "&appid=" +
+                TOKEN +
+                "&units=metric";
 
-        return stringBuilder.toString();
+        logger.info("Generated weather api url: " + generatedApiUrl);
+        return generatedApiUrl;
     }
 }
