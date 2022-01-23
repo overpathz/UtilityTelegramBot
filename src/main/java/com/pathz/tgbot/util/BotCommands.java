@@ -1,6 +1,7 @@
 package com.pathz.tgbot.util;
 
 public final class BotCommands {
+    private BotCommands() {}
 
     // user commands
     public static final String HELP_COMMAND = "/help";
